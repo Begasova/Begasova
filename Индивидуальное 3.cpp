@@ -2,8 +2,8 @@
 
 using namespace std;
 
-const int L = 100, N = 50;
 int** AllocateMemory(int n);
+void DeleteMemory(int** arr, int n);
 void EnterMatrix(int** arr, int n);
 int** CreateMatrix(int**arr, int n);
 int FindMax(int** arr, int n, int k, int l);
@@ -30,6 +30,7 @@ int main()
 	cout << "New matrix: " << endl;
 	DisplayMatrix(arr2, n);
 	system("pause");
+	DeleteMemory(arr, n);
 	return 0;
 }
 
@@ -95,4 +96,11 @@ void DisplayMatrix(int** arr, int n)
 		}
 		cout << endl;
 	}
+}
+
+void DeleteMemory(int** arr, int n)
+{
+	for (int i = 0; i < n; i++)
+		delete[] arr[i];
+	delete[] arr;
 }
